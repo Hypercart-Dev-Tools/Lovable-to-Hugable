@@ -10,16 +10,16 @@ This system is for you if you want to build a Lovable app that is:
 - ✅ **Easy to extend** - New features plug into existing contracts
 - ✅ **Easy for future developers to understand** - Self-documenting architecture with compliance checkpoints
 
-**Multi-user (tenant) ready:** This system supports opening your app to friends, family, and other users when you're ready. You don't have to decide now; the multi-user data protection patterns are built in from day one, so you can scale from personal use to multi-user SaaS without a rewrite.
+**Multi-user (tenant) ready:** This system supports opening your app to friends, family, and other users when you're ready. You don't have to decide now; the multi-user data protection patterns are built in from day one, so you can mor easily scale from personal use to multi-user SaaS without a rewrite.
 
 ## How to Use This System
 
 ### With Lovable AI:
 
-**Step 1: Upload AGENTS.md**
+**Step 1: Upload AGENTS.md**   
 Upload the AGENTS.md file into Lovable chat before requesting your first draft.
 
-**Step 2: Instruct Lovable to Follow the Guide**
+**Step 2: Instruct Lovable to Follow the Guide**   
 After uploading, paste this prompt into chat:
 
 ```
@@ -27,7 +27,7 @@ Please include AGENTS.md in the repo and follow the checklist-driven
 architecture in AGENTS.md for all code you generate.
 ```
 
-**Step 3: Audit First Draft**
+**Step 3: Audit First Draft**.  
 Request a compliance audit against the compliance matrix:
 ```
 Please audit the code against Section 0.1 (Compliance Matrix) in AGENTS.md
@@ -35,7 +35,7 @@ and report any violations.
 ```
 See: [Section 0.1 (Compliance Matrix)](./AGENTS.md#01-compliance-matrix-living-dashboard)
 
-**Step 4: Each Build Cycle**
+**Step 4: Each Build Cycle**.  
 Reset checkboxes in Section 0.1 and update "Last Audited" date in AGENTS.md header.
 
 ### With Other AI Assistants (Cursor, GitHub Copilot, Augment, etc.):
@@ -48,7 +48,7 @@ See [AGENTS.md Section 0](./AGENTS.md#0-how-to-use-this-doc) for detailed workfl
 
 ## Architecture
 
-This project follows a **checklist-driven architecture** approach. All architectural decisions, design patterns, and development workflows are documented in:
+This system follows a **checklist-driven architecture** approach. All architectural decisions, design patterns, and development workflows are documented in:
 
 📋 **[AGENTS.md](./AGENTS.md)** - Checklist-Driven Architecture Guide for Lovable and other AI agents.
 
