@@ -2,6 +2,8 @@
 
 The resources below informed the design principles codified in [AGENTS.md](./AGENTS.md). Each article covers one or more of the foundational concepts — SOLID, DRY, KISS, YAGNI — that the checklist-driven architecture translates into concrete, enforceable rules for a Lovable/React/Supabase stack.
 
+We primarily include SOLID and DRY references in our system because they are the most widely applicable to the Lovable/React/Supabase stack but all the principles overlap each other.
+
 These are not required reading to use the system. They exist for developers who want to understand *why* the AGENTS.md rules exist, trace a specific guideline back to its source principle, or go deeper on a concept when onboarding new contributors.
 
 If you add a new architectural rule to AGENTS.md that draws on an external source, add the reference here with a short summary of what it covers and how it connects to the project.
