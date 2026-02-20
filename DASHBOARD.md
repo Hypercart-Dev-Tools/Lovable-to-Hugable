@@ -21,7 +21,7 @@ This is the **living status tracker** for each build cycle. Agents and humans ch
 | # | Section | Verify | Build | QA | Human |
 |---|---------|--------|:-----:|:--:|:-----:|
 | 1 | Pre-Build | Domains, folders, tenant model, typed contracts defined | [ ] | [ ] | [ ] |
-| 2 | Build Contract | `UnifiedLayout` on all pages, no deprecated patterns | [ ] | [ ] | [ ] |
+| 2 | Build Contract | `UnifiedLayout` on all pages, single `max-width` in `UnifiedLayout.tsx`, no deprecated patterns | [ ] | [ ] | [ ] |
 | 3 | CMS Content | All CMS via `useCmsConfig` + service layer, no direct Supabase | [ ] | [ ] | [ ] |
 | 4 | State Mgmt | Auth via `useAuthStore`, tenant context available, no duplicate state | [ ] | [ ] | [ ] |
 | 5 | Design Rules | DRY + SOLID + state hygiene applied | [ ] | [ ] | [ ] |

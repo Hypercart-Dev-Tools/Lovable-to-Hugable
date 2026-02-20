@@ -9,6 +9,7 @@ Entry format:
 - `YYYY-MM-DD: [Section X] reason -> outcome -> next action #lessonslearned`
 
 Entries:
+- 2026-02-20: [v1.8] Added centralized page width rule to AGENTS.md §2 (Build Contract) and §11 (Theme/Branding). Prevents per-page `max-width` drift (DRY violation observed: LLM created 3-4 conflicting width settings across multiple pages). Updated TL;DR, §5 DRY paragraph, DASHBOARD.md compliance matrix row 2, QUICKHELP.md quick reference, and Appendix A/B templates in AGENTS.md.
 - 2026-02-16: [v1.6.6] Removed revision history from AGENTS.md §14 and consolidated all version history into CHANGELOG.md. Reduced AGENTS.md context overhead by 5 lines; all historical details now maintained in single source of truth (CHANGELOG.md). Updated §14 to point to CHANGELOG.md for version history.
 - 2026-02-14: [v1.6.4] Consolidated OFF-ROAD/STATIC-HOME-PAGE.md into a single self-contained doc with embedded capture scripts, LLM extraction instructions, and Cloudflare Worker setup guide. Documented Lovable hosting constraints (directory indexes don't resolve, SSG not supported) and added TLDR, TOC, and alphabetical appendix sections.
 - 2026-02-14: [v1.6.3] Enhanced "Graduation: Spike → Production" section in OFF-ROAD/SUPABASE-TEMP-DB.md with explicit 6-step process. Includes production schema SQL example, TypeScript repository, React Query hook, cleanup commands, and SQL verification queries.

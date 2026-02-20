@@ -12,6 +12,11 @@ Start here before diving into the full architecture guide. Most common tasks and
 All pages use a single unified layout system. Follow the build contract for page structure.  
 → [AGENTS.md §2 — Build Contract](./AGENTS.md#2-build-contract-checklist-current-repo-rules)
 
+### Set or update page/screen width
+Page `max-width` is controlled from a single place (`UnifiedLayout.tsx`). Never add per-page width overrides.  
+→ [AGENTS.md §2 — Build Contract](./AGENTS.md#2-build-contract-checklist-current-repo-rules)  
+→ [AGENTS.md §11 — Theme/Branding](./AGENTS.md#11-themebranding-future-ready-checklist)
+
 ### Add or edit CMS content
 CMS content is managed through a dedicated service layer and hook pattern, not direct database calls.  
 → [AGENTS.md §3 — CMS Content](./AGENTS.md#3-cms-content-checklist-app_config)
