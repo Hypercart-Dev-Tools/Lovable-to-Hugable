@@ -1,6 +1,6 @@
 # AGENTS.md - Checklist-Driven Architecture Guide (Lovable TS/JS/React/Vite/Supabase)
-**Version:** 1.7
-**Last Updated:** 2026-02-16
+**Version:** 1.8
+**Last Updated:** 2026-02-20
 **Last Audited:** _not yet audited_
 **Purpose:** Canonical architecture rules and checklists. For quick help, start with [QUICKHELP.md](./QUICKHELP.md). For build cycle status, see [DASHBOARD.md](./DASHBOARD.md).
 
@@ -20,6 +20,7 @@
 
 ## TL;DR) Read This First (Non-Negotiables)
 - Use `UnifiedLayout` + `UnifiedSidebar` for all pages; do not reintroduce deprecated layout patterns.
+- Define page `max-width` once in `UnifiedLayout.tsx`; never add per-page width overrides.
 - Use `useAuthStore()` as auth source of truth; no hardcoded user/org IDs.
 - Use `useCmsConfig` + `src/services/cms-config.ts` for CMS; no direct page-level Supabase calls.
 - Implement RLS (including tenant isolation rules) before shipping user-facing features.
@@ -106,6 +107,8 @@ The grade is assessed at the end of each audit cycle and serves as a guide for p
 - Footer remains embedded in `UnifiedSidebar.tsx`.
 - Standalone `<Footer />` is not rendered in pages.
 - Do not reintroduce deprecated patterns: `PublicNavbar.tsx`, custom per-page wrappers, standalone page footers.
+- Page/container `max-width` is defined **once** in `UnifiedLayout.tsx`; individual pages must not redeclare or override container widths.
+- Do not add per-page `max-w-*`, `w-*`, or inline width styles that duplicate or conflict with the layout-level `max-width` setting.
 
 ## 3) CMS Content Checklist (`app_config`)
 - CMS values are JSON strings in `app_config` table.
@@ -128,7 +131,7 @@ The grade is assessed at the end of each audit cycle and serves as a guide for p
 - No duplicated writable entity state across component state + store + Supabase.
 
 ## 5) Design Rules (Required Paragraphs)
-**DRY:** In this stack, each behavior must have one canonical implementation: one layout system, one auth state source (`useAuthStore()`), one CMS storage pattern (`app_config` JSON), and one data-access path per feature; when duplicate logic appears in multiple pages/components, extract only after confirming the abstraction preserves readability and does not hide Supabase query intent.
+**DRY:** In this stack, each behavior must have one canonical implementation: one layout system, one auth state source (`useAuthStore()`), one CMS storage pattern (`app_config` JSON), one page/container `max-width` definition (in `UnifiedLayout.tsx`), and one data-access path per feature; when duplicate logic appears in multiple pages/components, extract only after confirming the abstraction preserves readability and does not hide Supabase query intent.
 
 **S - Single Responsibility:** Keep React components focused on rendering and user interaction, move Supabase I/O into service functions/hooks, and keep stores responsible for state transitions; split files that mix view rendering, remote orchestration, and domain rules.
 
@@ -259,6 +262,7 @@ type Result<T> = { ok: true; data: T } | { ok: false; error: AppError };
 - Check `// Future:` comments before adding branding/layout logic.
 - `UnifiedSidebar.tsx` is the extension point for logo/product/colors.
 - `UnifiedLayout.tsx` is the extension point for layout variants.
+- `UnifiedLayout.tsx` is the single source of truth for page/container `max-width`; change the width setting there, never in individual page components.
 - Planned components (`TopNavLayout.tsx`, `MobileDrawer.tsx`, `LayoutPicker.tsx`) are added only when explicitly requested.
 
 ## 12) Key Paths
@@ -435,7 +439,7 @@ This is the **living status tracker** for each build cycle. Agents and humans ch
 | # | Section | Verify | Build | QA | Human |
 |---|---------|--------|:-----:|:--:|:-----:|
 | 1 | Pre-Build | Domains, folders, tenant model, typed contracts defined | [ ] | [ ] | [ ] |
-| 2 | Build Contract | `UnifiedLayout` on all pages, no deprecated patterns | [ ] | [ ] | [ ] |
+| 2 | Build Contract | `UnifiedLayout` on all pages, single `max-width` in `UnifiedLayout.tsx`, no deprecated patterns | [ ] | [ ] | [ ] |
 | 3 | CMS Content | All CMS via `useCmsConfig` + service layer, no direct Supabase | [ ] | [ ] | [ ] |
 | 4 | State Mgmt | Auth via `useAuthStore`, tenant context available, no duplicate state | [ ] | [ ] | [ ] |
 | 5 | Design Rules | DRY + SOLID + state hygiene applied | [ ] | [ ] | [ ] |
@@ -511,6 +515,11 @@ Start here before diving into the full architecture guide. Most common tasks and
 ### Add a new page
 All pages use a single unified layout system. Follow the build contract for page structure.
 → [AGENTS.md §2 — Build Contract](./AGENTS.md#2-build-contract-checklist-current-repo-rules)
+
+### Set or update page/screen width
+Page `max-width` is controlled from a single place (`UnifiedLayout.tsx`). Never add per-page width overrides.
+→ [AGENTS.md §2 — Build Contract](./AGENTS.md#2-build-contract-checklist-current-repo-rules)
+→ [AGENTS.md §11 — Theme/Branding](./AGENTS.md#11-themebranding-future-ready-checklist)
 
 ### Add or edit CMS content
 CMS content is managed through a dedicated service layer and hook pattern, not direct database calls.
